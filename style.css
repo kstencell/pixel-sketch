@@ -24,3 +24,9 @@ body {
     height: auto;
     width: auto;
 }
+
+#reset-btn {
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+}

@@ -2,29 +2,55 @@
 
 
 
-function createGrid(grid) {
+function createGrid(rows = 16, columns = 16) {
 
-    for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+    grid = document.getElementById('grid');
+    grid.innerHTML = '';
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < columns; j++) {
             newSquare = document.createElement('div');
             newSquare.classList.add(`row${i}`);
             newSquare.classList.add(`column${j}`);
             newSquare.classList.add("grid-tile");
-            //newSquare.textContent = `${i}, ${j}`;
 
             grid.appendChild(newSquare);
         }
     }
+
+    const tiles = document.querySelectorAll(".grid-tile");
+
+    tiles.forEach((tile) => {
+        tile.addEventListener('mouseover', () => {
+            tile.style.backgroundColor = "orange";
+        });
+    });
+
+    grid.style['grid-template-rows'] = `repeat(${rows}, calc(100vw/${rows}))`;
+    grid.style['grid-template-columns'] = `repeat(${columns}, calc(100vw/${columns}))`;
 }
 
-grid = document.getElementById('grid');
-createGrid(grid);
+createGrid();
 
-const tiles = document.querySelectorAll(".grid-tile");
-console.log(tiles);
+let regex = /^[0-9]+$/;
 
-tiles.forEach((tile) => {
-    tile.addEventListener('mousedown, mouseover', () => {
-        tile.style.backgroundColor = "orange";
+let resetBtn = document.getElementById('reset-btn');
+resetBtn.addEventListener('click', () => {
+    const tiles = document.querySelectorAll(".grid-tile");
+    tiles.forEach((tile) => {
+        tile.style.backgroundColor = 'white';
     });
+    
+    let rows;
+    do {
+        rows= prompt('How many rows would you like the grid to have?');
+    } while (!rows.match(regex) && rows >=1 && rows <=16);
+
+    let columns;
+    do {
+        columns= prompt('How many columns would you like the grid to have?');
+    } while (!columns.match(regex) && rows >= 1 && rows <= 16);
+
+    createGrid(rows, columns);
+
 });
