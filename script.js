@@ -26,8 +26,8 @@ function createGrid(rows = 16, columns = 16) {
         });
     });
 
-    grid.style['grid-template-rows'] = `repeat(${rows}, calc(100vw/${rows}))`;
-    grid.style['grid-template-columns'] = `repeat(${columns}, calc(100vw/${columns}))`;
+    grid.style['grid-template-columns'] = `repeat(${columns}, calc(100% / ${columns}))`;
+    grid.style['grid-template-rows'] = `repeat(${rows}, calc(100% / ${rows}))`;
 }
 
 createGrid();
