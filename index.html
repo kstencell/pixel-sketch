@@ -5,14 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Pixel Sketch</title>
 </head>
 <body>
     <div id="flex-box-full-screen">
-        <div id="top-bar">
+        <div id="toolbar">
             <button id="reset-btn">Reset grid</button>
             <button id="eraser-btn">Eraser</button>
-            <button id="colour-btn">Choose Colour</button>
+            <div id='color-options'>
+                <input type='color' id='background-colour-picker' class='colour-pickers' value='#ffffff'>
+                <label for='background-colour-picker'>Background Colour</label>
+                <input type='color' id="colour-picker" class='colour-pickers' value="#000000">
+                <label for='color-picker'>Colour</label>
+            </div>
         </div>
         <div id='grid'></div>
     </div>

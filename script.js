@@ -1,6 +1,6 @@
 
 
-let currentColour = "orange"
+let currentColour = "black"
 
 
 function createGrid(rows = 16, columns = 16) {
@@ -55,13 +55,23 @@ resetBtn.addEventListener('click', () => {
 
 let eraserBtn = document.getElementById('eraser-btn');
 eraserBtn.addEventListener('click', () => {
-    currentColour = 'black';
+    currentColour = backgroundColourPicker.value;
 })
 
-let colourBtn = document.getElementById('colour-btn');
-colourBtn.addEventListener('click', () => {
-    let newColour = prompt("Choose a colour");
-    currentColour = newColour;
+let colourPicker = document.getElementById('colour-picker');
+colourPicker.addEventListener("change", () => {
+    console.log(colourPicker.value);
+    currentColour = colourPicker.value;
+})
+
+let backgroundColourPicker = document.getElementById('background-colour-picker');
+backgroundColourPicker.addEventListener("change", () => {
+    
 })
 
 createGrid();
+
+colourPicker.value = "black";
+currentColour = colourPicker.value;
+
+
