@@ -1,5 +1,6 @@
 
 
+let currentColour = "orange"
 
 
 function createGrid(rows = 16, columns = 16) {
@@ -22,7 +23,7 @@ function createGrid(rows = 16, columns = 16) {
 
     tiles.forEach((tile) => {
         tile.addEventListener('mouseover', () => {
-            tile.style.backgroundColor = "orange";
+            tile.style.backgroundColor = currentColour;
         });
     });
 
@@ -30,15 +31,13 @@ function createGrid(rows = 16, columns = 16) {
     grid.style['grid-template-rows'] = `repeat(${rows}, calc(100% / ${rows}))`;
 }
 
-createGrid();
-
 let regex = /^[0-9]+$/;
-
 let resetBtn = document.getElementById('reset-btn');
 resetBtn.addEventListener('click', () => {
+
     const tiles = document.querySelectorAll(".grid-tile");
     tiles.forEach((tile) => {
-        tile.style.backgroundColor = 'white';
+        tile.style.backgroundColor = 'black';
     });
     
     let rows;
@@ -52,5 +51,17 @@ resetBtn.addEventListener('click', () => {
     } while (!columns.match(regex) && rows >= 1 && rows <= 16);
 
     createGrid(rows, columns);
-
 });
+
+let eraserBtn = document.getElementById('eraser-btn');
+eraserBtn.addEventListener('click', () => {
+    currentColour = 'black';
+})
+
+let colourBtn = document.getElementById('colour-btn');
+colourBtn.addEventListener('click', () => {
+    let newColour = prompt("Choose a colour");
+    currentColour = newColour;
+})
+
+createGrid();
