@@ -1,6 +1,7 @@
 
 
-let currentColour = "black"
+let currentColour = "#000000";
+let currentBackgroundColour = "#ffffff";
 
 
 function createGrid(rows = 16, columns = 16) {
@@ -22,6 +23,7 @@ function createGrid(rows = 16, columns = 16) {
     const tiles = document.querySelectorAll(".grid-tile");
 
     tiles.forEach((tile) => {
+        tile.style.backgroundColor = currentBackgroundColour;
         tile.addEventListener('mouseover', () => {
             tile.style.backgroundColor = currentColour;
         });
@@ -37,7 +39,7 @@ resetBtn.addEventListener('click', () => {
 
     const tiles = document.querySelectorAll(".grid-tile");
     tiles.forEach((tile) => {
-        tile.style.backgroundColor = 'black';
+        tile.style.backgroundColor = currentBackgroundColour;
     });
     
     let rows;
@@ -55,23 +57,26 @@ resetBtn.addEventListener('click', () => {
 
 let eraserBtn = document.getElementById('eraser-btn');
 eraserBtn.addEventListener('click', () => {
-    currentColour = backgroundColourPicker.value;
-})
+    currentColour = currentBackgroundColour;
+});
 
 let colourPicker = document.getElementById('colour-picker');
+colourPicker.value = currentColour;
 colourPicker.addEventListener("change", () => {
-    console.log(colourPicker.value);
     currentColour = colourPicker.value;
-})
+    console.log(currentColour);
+});
 
 let backgroundColourPicker = document.getElementById('background-colour-picker');
+backgroundColourPicker.value = currentBackgroundColour;
 backgroundColourPicker.addEventListener("change", () => {
-    
-})
+    currentBackgroundColour = backgroundColourPicker.value;
+    const tiles = document.querySelectorAll(".grid-tile");
+    tiles.forEach((tile) => {
+            tile.style.backgroundColor = currentBackgroundColour;
+    });
+});
 
 createGrid();
-
-colourPicker.value = "black";
-currentColour = colourPicker.value;
 
 
