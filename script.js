@@ -55,9 +55,16 @@ resetBtn.addEventListener('click', () => {
     createGrid(rows, columns);
 });
 
+let gridSlider = document.getElementById('myRange');
+gridSlider.addEventListener('change', () => {
+    createGrid(gridSlider.value, gridSlider.value);
+})
+
 let eraserBtn = document.getElementById('eraser-btn');
 eraserBtn.addEventListener('click', () => {
+    console.log(currentBackgroundColour);
     currentColour = currentBackgroundColour;
+    console.log(`background colour for eraser is ${currentBackgroundColour}`);
 });
 
 let colourPicker = document.getElementById('colour-picker');
@@ -75,6 +82,7 @@ backgroundColourPicker.addEventListener("change", () => {
     tiles.forEach((tile) => {
             tile.style.backgroundColor = currentBackgroundColour;
     });
+    console.log(currentBackgroundColour);
 });
 
 createGrid();

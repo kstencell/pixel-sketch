@@ -8,18 +8,33 @@
     <title>Pixel Sketch</title>
 </head>
 <body>
-    <div id="flex-box-full-screen">
-        <div id="toolbar">
-            <button id="reset-btn">Reset grid</button>
-            <button id="eraser-btn">Eraser</button>
-            <div id='color-options'>
-                <input type='color' id='background-colour-picker' class='colour-pickers' value='#ffffff'>
-                <label for='background-colour-picker'>Background Colour</label>
-                <input type='color' id="colour-picker" class='colour-pickers' value="#000000">
-                <label for='color-picker'>Colour</label>
-            </div>
+    <div id="fullscreen">
+        <div class="header">
+            <h2>Pixel Sketch</h2>
         </div>
-        <div id='grid'></div>
+        <div id="flex-box-full-screen">
+            <div id="toolbar">
+                <div id='color-options'>
+                    <div id="background-colour-container">
+                        <label for='background-colour-picker'>Background Colour</label>
+                        <input type='color' id='background-colour-picker' class='colour-pickers' value='#ffffff'>
+                    </div>
+                    <div id="colour-picker-container">
+                        <label for='color-picker' id='colour-label'>Colour</label>
+                        <input type='color' id="colour-picker" class='colour-pickers' value="#000000">
+                    </div>
+                </div>
+                <div class="slide-container">
+                    <input type="range" min="1" max="50" value="16" class="slider" id="myRange">
+                    <label for="myRange">Grid Size</label>
+                </div>
+                <div class='clear-buttons'>
+                    <button id="reset-btn" class="button">Reset grid</button>
+                    <button id="eraser-btn" class="button">Eraser</button>
+                </div>
+            </div>
+            <div id='grid'></div>
+        </div>
     </div>
 
 
