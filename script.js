@@ -33,31 +33,12 @@ function createGrid(rows = 16, columns = 16) {
     grid.style['grid-template-rows'] = `repeat(${rows}, calc(100% / ${rows}))`;
 }
 
-let regex = /^[0-9]+$/;
-let resetBtn = document.getElementById('reset-btn');
-resetBtn.addEventListener('click', () => {
-
-    const tiles = document.querySelectorAll(".grid-tile");
-    tiles.forEach((tile) => {
-        tile.style.backgroundColor = currentBackgroundColour;
-    });
-    
-    let rows;
-    do {
-        rows= prompt('How many rows would you like the grid to have?');
-    } while (!rows.match(regex) && rows >=1 && rows <=16);
-
-    let columns;
-    do {
-        columns= prompt('How many columns would you like the grid to have?');
-    } while (!columns.match(regex) && rows >= 1 && rows <= 16);
-
-    createGrid(rows, columns);
-});
-
 let gridSlider = document.getElementById('myRange');
+gridSlider.value = 16;
+let sliderText = document.getElementById('slider-text');
 gridSlider.addEventListener('change', () => {
     createGrid(gridSlider.value, gridSlider.value);
+    sliderText.innerHTML = `Grid size: ${gridSlider.value}x${gridSlider.value}`;
 })
 
 let eraserBtn = document.getElementById('eraser-btn');
@@ -65,6 +46,17 @@ eraserBtn.addEventListener('click', () => {
     console.log(currentBackgroundColour);
     currentColour = currentBackgroundColour;
     console.log(`background colour for eraser is ${currentBackgroundColour}`);
+});
+
+let resetBtn = document.getElementById('reset-btn');
+resetBtn.addEventListener('click', () => {
+
+    createGrid(gridSlider.value, gridSlider.value);
+
+    const tiles = document.querySelectorAll(".grid-tile");
+    tiles.forEach((tile) => {
+        tile.style.backgroundColor = currentBackgroundColour;
+    });
 });
 
 let colourPicker = document.getElementById('colour-picker');
