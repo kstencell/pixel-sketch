@@ -2,6 +2,6 @@
 
 Pixel Sketch is a drawing application for web browsers developed and designed soley by me.
 
-https://kstencell.github.io/pixel-sketch/
+This project is hosted by GitHub pages: [Pixel Sketch](https://kstencell.github.io/pixel-sketch/)
 
 This project was motivated by The Odin Project learning community.
